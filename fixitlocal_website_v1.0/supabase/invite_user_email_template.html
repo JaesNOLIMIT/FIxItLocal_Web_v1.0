@@ -1,0 +1,91 @@
+<div style="margin:0;padding:0;background:#eef2f7;font-family:Segoe UI,Arial,sans-serif;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#eef2f7;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:720px;background:#ffffff;border:1px solid #d7dee8;border-radius:14px;overflow:hidden;">
+          <tr>
+            <td style="background:#0b2a52;padding:18px 24px;">
+              <p style="margin:0;color:#ffffff;font-size:18px;font-weight:700;letter-spacing:0.2px;">
+                FixItLocal Civic Authority Portal
+              </p>
+              <p style="margin:4px 0 0 0;color:#c7d7ec;font-size:12px;">
+                Official Account Issuance Notice
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:24px;">
+              <p style="margin:0 0 14px 0;color:#243447;font-size:14px;line-height:1.6;">
+                Good day{{ if .Data.full_name }}, <strong>{{ .Data.full_name }}</strong>{{ else }}, <strong>{{ .Email }}</strong>{{ end }}.
+              </p>
+
+              <p style="margin:0 0 14px 0;color:#243447;font-size:14px;line-height:1.6;">
+                This email serves as formal confirmation that your operational account has been created for
+                <strong>{{ if .Data.organization }}{{ .Data.organization }}{{ else }}FixItLocal Civic Authority Portal{{ end }}</strong>.
+              </p>
+
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;background:#f8fbff;border:1px solid #d7e4f5;border-radius:10px;overflow:hidden;margin:0 0 16px 0;">
+                <tr>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;font-weight:700;width:210px;">Official Email</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;">{{ .Email }}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;font-weight:700;">Assigned Role</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;">{{ .Data.role }}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;font-weight:700;">Temporary Password</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;">
+                    <code style="font-size:13px;background:#ffffff;border:1px solid #cfdcec;border-radius:6px;padding:3px 8px;display:inline-block;">{{ .Data.temporary_password }}</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;font-weight:700;">Account Type</td>
+                  <td style="padding:10px 12px;border-bottom:1px solid #deebfb;color:#10263f;font-size:13px;">{{ .Data.account_type }}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px 12px;color:#10263f;font-size:13px;font-weight:700;">Issued By</td>
+                  <td style="padding:10px 12px;color:#10263f;font-size:13px;">{{ .Data.created_by }}</td>
+                </tr>
+              </table>
+
+              {{ if .Data.access_start }}
+              <p style="margin:0 0 6px 0;color:#334155;font-size:13px;">
+                <strong>Access Start:</strong> {{ .Data.access_start }}
+              </p>
+              {{ end }}
+              {{ if .Data.access_end }}
+              <p style="margin:0 0 6px 0;color:#334155;font-size:13px;">
+                <strong>Access End:</strong> {{ .Data.access_end }}
+              </p>
+              {{ end }}
+
+              <div style="margin:14px 0 16px 0;padding:12px 14px;border:1px solid #f2d9a6;background:#fff8ea;border-radius:10px;">
+                <p style="margin:0;color:#7a4f00;font-size:13px;line-height:1.6;">
+                  For security compliance, you are required to change the temporary password immediately after first login.
+                </p>
+              </div>
+
+              <p style="margin:0 0 16px 0;text-align:center;">
+                <a
+                  href="{{ if .Data.login_url }}{{ .Data.login_url }}{{ else }}{{ .SiteURL }}/login{{ end }}"
+                  style="display:inline-block;padding:11px 20px;border-radius:9px;background:#0b3d91;color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;"
+                >
+                  Proceed To Login
+                </a>
+              </p>
+
+              <p style="margin:0 0 8px 0;color:#5b6b80;font-size:12px;line-height:1.5;">
+                If you did not expect this account issuance, report this immediately to your system administrator.
+              </p>
+              <p style="margin:0;color:#8aa0b8;font-size:11px;">
+                Reference Time (UTC): {{ .Data.issued_at_utc }}
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
